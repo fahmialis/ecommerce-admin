@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-center row">
         <div class="col-md-10">
             <!-- product card -->
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
+          <ProductCard v-for="product in products"
+          :key="product.id"
+          :product="product"
+          ></ProductCard>
             <!-- product card -->
         </div>
     </div>
@@ -21,10 +21,22 @@
 <script>
 import ProductCard from '../components/ProductCard.vue'
 import Navbar from '../components/Navbar'
+import { mapState } from 'vuex'
 
 export default {
-  components: { ProductCard, Navbar }
-
+  name: 'home-page',
+  components: { ProductCard, Navbar },
+  methods: {
+    getProduct () {
+      this.$store.dispatch('getProducts')
+    }
+  },
+  created () {
+    this.getProduct()
+  },
+  computed: {
+    ...mapState(['products'])
+  }
 }
 </script>
 

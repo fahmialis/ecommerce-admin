@@ -5,7 +5,7 @@
             <div class="card card-signin my-5">
             <div class="card-body">
                 <h4 class="card-title text-center"><b>Add product</b></h4>
-                <form class="form-signin">
+                <form class="form-signin" @submit.prevent="addProduct">
                     <div class="form-label-group">
                         <h5>Name</h5>
                         <input type="text" id="inputName" class="form-control" placeholder="Name" v-model="product.name" required autofocus>
@@ -39,11 +39,6 @@
 <script>
 export default {
   name: 'addProduct',
-  methods: {
-    returnHome () {
-      this.$router.push('/')
-    }
-  },
   data () {
     return {
       product: {
@@ -52,6 +47,20 @@ export default {
         stock: '',
         image_url: ''
       }
+    }
+  },
+  methods: {
+    returnHome () {
+      this.$router.push('/')
+    },
+    addProduct () {
+      const newProduct = {
+        name: this.product.name,
+        price: +this.product.price,
+        stock: +this.product.stock,
+        image_url: this.product.image_url
+      }
+      this.$state.dispatch('addProduct', newProduct)
     }
   }
 

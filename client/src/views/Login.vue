@@ -6,7 +6,7 @@
                 <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Log In</h5>
-                    <form class="form-signin">
+                    <form class="form-signin" @submit.prevent="login">
                       <div class="form-label-group">
                           <label for="inputEmail">Email</label>
                           <input type="email" id="inputEmail" class="form-control" placeholder="Email" v-model="user.email" required autofocus>
@@ -18,7 +18,7 @@
                           <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="user.password" required>
                       </div>
                       <br><br>
-                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" @click.prevent="login">Sign in</button>
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >Sign in</button>
                     </form>
                 </div>
                 </div>
@@ -30,17 +30,22 @@
 
 <script>
 export default {
-  methods: {
-    login () {
-      this.$router.push('/')
-    }
-  },
+  name: 'login',
   data () {
     return {
       user: {
         email: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    login () {
+      const user = {
+        email: this.user.email,
+        password: this.user.password
+      }
+      this.$store.dispatch('login', user)
     }
   }
 }

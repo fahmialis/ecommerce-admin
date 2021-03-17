@@ -23,7 +23,7 @@ export default {
       this.$router.push('/addProduct')
     },
     logout () {
-      this.$router.push('/login')
+      this.$store.dispatch('logout')
     }
 
   }
