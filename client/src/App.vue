@@ -2,15 +2,18 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/editProduct">Edit Product</router-link> |
+      <router-link to="/addProduct">Add product</router-link> |
     </div>
     <router-view/>
+    <!-- login -->
   </div>
 </template>
 
-<style>
+<style >
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Poppins;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -29,4 +32,5 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
