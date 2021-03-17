@@ -18,7 +18,7 @@
                         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     </div>
                     <br><br>
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" @click.prevent="login">Sign in</button>
                     </form>
                 </div>
                 </div>
@@ -30,6 +30,11 @@
 
 <script>
 export default {
+  methods: {
+    login () {
+      this.$router.push('/')
+    }
+  }
 
 }
 </script>

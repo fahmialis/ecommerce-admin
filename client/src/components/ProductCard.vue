@@ -26,7 +26,7 @@
         <br><br>
         <!-- link to edit page -->
         <div class="d-flex flex-column mt-4">
-            <button class="btn btn-primary btn-xl" type="button">Edit Product</button>
+            <button class="btn btn-primary btn-xl" type="button" @click.prevent="editProduct">Edit Product</button>
         </div>
         <!-- link to edit page -->
     </div>
@@ -35,6 +35,11 @@
 
 <script>
 export default {
+  methods: {
+    editProduct () {
+      this.$router.push('/editProduct')
+    }
+  }
 
 }
 </script>

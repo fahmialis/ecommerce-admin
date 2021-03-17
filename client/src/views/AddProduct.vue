@@ -27,6 +27,7 @@
                     </div>
                     <br><br>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    <button class="btn btn-lg btn-danger btn-block" @click.prevent='returnHome'>Cancel</button>
                 </form>
             </div>
             </div>
@@ -37,6 +38,12 @@
 
 <script>
 export default {
+  name: 'addProduct',
+  methods: {
+    returnHome () {
+      this.$router.push('/')
+    }
+  }
 
 }
 </script>

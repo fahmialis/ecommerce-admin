@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/editProduct">Edit Product</router-link> |
-      <router-link to="/addProduct">Add product</router-link> |
-    </div>
+      <router-link to="/addProduct">Add product</router-link>
+    </div> -->
     <router-view/>
     <!-- login -->
   </div>
 </template>
 
+<script>
+
+export default {
+
+}
+</script>
 <style >
 #app {
   font-family: Poppins;
