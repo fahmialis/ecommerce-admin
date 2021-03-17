@@ -7,18 +7,18 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Log In</h5>
                     <form class="form-signin">
-                    <div class="form-label-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-                    </div>
-                    <br>
-                    <div class="form-label-group">
-                        <label for="inputPassword">Password</label>
-                        <br>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    </div>
-                    <br><br>
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" @click.prevent="login">Sign in</button>
+                      <div class="form-label-group">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" id="inputEmail" class="form-control" placeholder="Email" v-model="user.email" required autofocus>
+                      </div>
+                      <br>
+                      <div class="form-label-group">
+                          <label for="inputPassword">Password</label>
+                          <br>
+                          <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="user.password" required>
+                      </div>
+                      <br><br>
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" @click.prevent="login">Sign in</button>
                     </form>
                 </div>
                 </div>
@@ -34,8 +34,15 @@ export default {
     login () {
       this.$router.push('/')
     }
+  },
+  data () {
+    return {
+      user: {
+        email: '',
+        password: ''
+      }
+    }
   }
-
 }
 </script>
 

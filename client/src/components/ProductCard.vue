@@ -23,12 +23,13 @@
         <!-- item name here -->
 
     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-        <br><br>
-        <!-- link to edit page -->
+        <br>
+        <!-- link to action -->
         <div class="d-flex flex-column mt-4">
             <button class="btn btn-primary btn-xl" type="button" @click.prevent="editProduct">Edit Product</button>
+            <button class="btn btn-danger btn-xl" type="button" >Delete</button>
         </div>
-        <!-- link to edit page -->
+        <!-- link to action -->
     </div>
 </div>
 </template>
