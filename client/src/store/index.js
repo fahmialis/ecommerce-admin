@@ -52,16 +52,27 @@ export default new Vuex.Store({
         })
     },
     addProduct (context, payload) {
-      console.log('masuk add product')
+      // console.log('masuk add product')
       const headers = {
         access_token: localStorage.access_token
       }
-      axios.post('/product', { headers }, payload)
+      axios.post('/product', payload, { headers })
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'New product added'
+          })
+          router.push('/')
         })
         .catch(err => {
-          console.log(err)
+          // console.log(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data.message
+          })
         })
     }
   },

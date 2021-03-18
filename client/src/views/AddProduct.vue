@@ -60,7 +60,7 @@ export default {
         stock: +this.product.stock,
         image_url: this.product.image_url
       }
-      this.$state.dispatch('addProduct', newProduct)
+      this.$store.dispatch('addProduct', newProduct)
     }
   }
 
