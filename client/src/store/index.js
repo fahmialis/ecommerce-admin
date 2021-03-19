@@ -22,16 +22,28 @@ export default new Vuex.Store({
         .then(data => {
           // console.log({ data })
           // console.log(data.data.access_token)
+          if (data.role !== 'Admin') {
+            const err = 'not authorized'
+            throw err
+          }
           localStorage.setItem('access_token', data.data.access_token)
           router.push('/')
         })
         .catch(err => {
-          console.log({ err })
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `${err.response.data.message}`
-          })
+          // console.log({ err })
+          if (err === 'not authorized') {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Sorry, only admin can login'
+            })
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${err.response.data.message}`
+            })
+          }
         })
     },
     logout (context, payload) {
