@@ -20,9 +20,9 @@ export default new Vuex.Store({
       // console.log(payload)
       axios.post('/user/login', payload)
         .then(data => {
-          // console.log({ data })
+          console.log({ data })
           // console.log(data.data.access_token)
-          if (data.role !== 'Admin') {
+          if (data.data.role !== 'Admin') {
             const err = 'not authorized'
             throw err
           }
