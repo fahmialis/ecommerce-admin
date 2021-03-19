@@ -43,9 +43,12 @@ export default {
   methods: {
     deleteProduct (id) {
       this.$store.dispatch('deleteProduct', id)
+    },
+    editProduct (id) {
+      console.log(id)
+      this.$router.push(`/editProduct/${id}`)
     }
   }
-
 }
 </script>
 

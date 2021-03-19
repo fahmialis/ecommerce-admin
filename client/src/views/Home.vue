@@ -26,6 +26,16 @@ import { mapState } from 'vuex'
 export default {
   name: 'home-page',
   components: { ProductCard, Navbar },
+  data () {
+    return {
+      productData: {
+        name: '',
+        price: '',
+        stock: '',
+        image_url: ''
+      }
+    }
+  },
   methods: {
     getProduct () {
       this.$store.dispatch('getProducts')
@@ -33,6 +43,7 @@ export default {
   },
   created () {
     this.getProduct()
+    // console.log(this.$store.state.products)
   },
   updated () {
     this.getProduct()

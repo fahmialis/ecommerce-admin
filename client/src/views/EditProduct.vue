@@ -5,7 +5,7 @@
             <div class="card card-signin my-5">
             <div class="card-body">
                 <h4 class="card-title text-center"><b>Edit product</b></h4>
-                <form class="form-signin">
+                <form class="form-signin" @submit.prevent="confirmEditProduct()">
                     <div class="form-label-group">
                         <h5>Name</h5>
                         <input type="text" id="inputName" class="form-control" placeholder="Name" v-model="product.name" required autofocus>
@@ -39,11 +39,6 @@
 <script>
 export default {
   name: 'editProduct',
-  methods: {
-    returnHome () {
-      this.$router.push('/')
-    }
-  },
   data () {
     return {
       product: {
@@ -51,10 +46,42 @@ export default {
         price: '',
         stock: '',
         image_url: ''
+      },
+      id: this.$route.params.id
+    }
+  },
+  methods: {
+    returnHome () {
+      this.$router.push('/')
+    },
+    confirmEditProduct () {
+      const data = {
+        id: this.id,
+        name: this.product.name,
+        price: this.product.price,
+        stock: this.product.stock,
+        image_url: this.product.image_url
+      }
+      this.$store.dispatch('confirmEditProduct', data)
+    },
+    getDataById () {
+      // console.log(id)
+      const data = this.$store.state.products
+      // console.log(data)
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id === +this.id) {
+          this.product.name = data[i].name
+          this.product.price = data[i].price
+          this.product.stock = data[i].stock
+          this.product.image_url = data[i].image_url
+        }
       }
     }
+  },
+  created () {
+    this.getDataById()
+    // console.log(this.$store.state.products)
   }
-
 }
 </script>
 

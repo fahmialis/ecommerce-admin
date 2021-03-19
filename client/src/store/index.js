@@ -117,6 +117,25 @@ export default new Vuex.Store({
           )
         }
       })
+    },
+    confirmEditProduct (context, payload) {
+      // console.log(payload)
+      const id = +payload.id
+      const headers = {
+        access_token: localStorage.access_token
+      }
+      axios.put(`product/${id}`, payload, { headers })
+        .then(data => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Data updated'
+          })
+          router.push('/')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   modules: {
