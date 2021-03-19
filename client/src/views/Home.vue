@@ -34,6 +34,9 @@ export default {
   created () {
     this.getProduct()
   },
+  updated () {
+    this.getProduct()
+  },
   computed: {
     ...mapState(['products'])
   }

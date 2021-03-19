@@ -39,7 +39,12 @@
 <script>
 export default {
   name: 'productCard',
-  props: ['product']
+  props: ['product'],
+  methods: {
+    deleteProduct (id) {
+      this.$store.dispatch('deleteProduct', id)
+    }
+  }
 
 }
 </script>

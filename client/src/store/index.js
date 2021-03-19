@@ -74,6 +74,25 @@ export default new Vuex.Store({
             text: err.response.data.message
           })
         })
+    },
+    deleteProduct (context, payload) {
+      // console.log(payload)
+      const id = payload
+      const headers = {
+        access_token: localStorage.access_token
+      }
+      axios.delete(`product/${id}`, { headers })
+        .then(data => {
+          // console.log(data, 'deleted')
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product deleted'
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   modules: {
