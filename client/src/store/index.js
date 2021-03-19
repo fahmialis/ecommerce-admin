@@ -76,23 +76,47 @@ export default new Vuex.Store({
         })
     },
     deleteProduct (context, payload) {
-      // console.log(payload)
-      const id = payload
-      const headers = {
-        access_token: localStorage.access_token
-      }
-      axios.delete(`product/${id}`, { headers })
-        .then(data => {
-          // console.log(data, 'deleted')
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Product deleted'
-          })
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const id = payload
+          const headers = {
+            access_token: localStorage.access_token
+          }
+          axios.delete(`product/${id}`, { headers })
+            .then(data => {
+              // console.log(data)
+              swalWithBootstrapButtons.fire(
+                'Deleted!',
+                'Product has been deleted.',
+                'success'
+              )
+            })
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            '',
+            'error'
+          )
+        }
+      })
     }
   },
   modules: {
