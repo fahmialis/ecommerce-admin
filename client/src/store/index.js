@@ -27,7 +27,7 @@ export default new Vuex.Store({
             throw err
           }
           localStorage.setItem('access_token', data.data.access_token)
-          router.push('/')
+          router.push('/home')
         })
         .catch(err => {
           // console.log({ err })
@@ -76,7 +76,7 @@ export default new Vuex.Store({
             icon: 'success',
             title: 'New product added'
           })
-          router.push('/')
+          router.push('/home')
         })
         .catch(err => {
           // console.log(err.response.data.message)
@@ -143,7 +143,7 @@ export default new Vuex.Store({
             icon: 'success',
             title: 'Data updated'
           })
-          router.push('/')
+          router.push('/home')
         })
         .catch(err => {
           console.log(err)

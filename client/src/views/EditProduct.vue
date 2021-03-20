@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     returnHome () {
-      this.$router.push('/')
+      this.$router.push('/home')
     },
     confirmEditProduct () {
       const data = {
