@@ -47,8 +47,13 @@ export default new Vuex.Store({
         })
     },
     logout (context, payload) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Logged out'
+      })
       localStorage.removeItem('access_token')
-      router.push('/login')
+      router.push('/')
     },
     getProducts (context, payload) {
       const headers = {
@@ -72,7 +77,7 @@ export default new Vuex.Store({
         .then(({ data }) => {
           // console.log(data)
           Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'success',
             title: 'New product added'
           })
@@ -139,7 +144,7 @@ export default new Vuex.Store({
       axios.put(`product/${id}`, payload, { headers })
         .then(data => {
           Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'success',
             title: 'Data updated'
           })
