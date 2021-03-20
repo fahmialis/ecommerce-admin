@@ -15,7 +15,7 @@
             <h5>Name : {{product.name}} </h5>
         </div>
         <div class="mt-1 mb-1 spec-1">
-            <h5>Price : {{product.price}}</h5>
+            <h5>Price : {{this.currency(product.price)}}</h5>
         </div>
         <div class="mt-1 mb-1 spec-1">
             <h5>Stock : {{product.stock}}</h5>
@@ -43,6 +43,9 @@ export default {
   methods: {
     deleteProduct (id) {
       this.$store.dispatch('deleteProduct', id)
+    },
+    currency (currency) {
+      return `Rp. ${currency.toLocaleString()},00`
     },
     editProduct (id) {
       console.log(id)
