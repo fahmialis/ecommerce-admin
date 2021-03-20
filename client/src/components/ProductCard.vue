@@ -48,7 +48,7 @@ export default {
       return `Rp. ${currency.toLocaleString()},00`
     },
     editProduct (id) {
-      console.log(id)
+      // console.log(id)
       this.$router.push(`/editProduct/${id}`)
     }
   }

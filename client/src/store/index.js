@@ -20,7 +20,7 @@ export default new Vuex.Store({
       // console.log(payload)
       axios.post('/user/login', payload)
         .then(data => {
-          console.log({ data })
+          // console.log({ data })
           // console.log(data.data.access_token)
           if (data.data.role !== 'Admin') {
             const err = 'not authorized'
@@ -90,8 +90,8 @@ export default new Vuex.Store({
     deleteProduct (context, payload) {
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
+          cancelButton: 'btn btn-danger',
+          confirmButton: 'btn btn-success'
         },
         buttonsStyling: false
       })
